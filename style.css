@@ -1,0 +1,218 @@
+/* GERAL =====================================*/
+* {
+  /* seletor universal */
+  margin: 0; /* tira espaço entre os elementos (caixas) */
+  /* tudo do css ou html é uma caixa (tem bordas, com content, width, height, padding(interno), border, margin) */
+  box-sizing: border-box; /* tamanho da caixa contado a partir da borda, sem padding */
+
+}
+
+:root{
+  font-size: 62.5%; 
+  /* 0.625rem = 10px => com isso 62.5 = 10px */
+  /* faço isso para dar acessibilidade da fonte */
+
+  --primary-color: color: hsla(0, 0%, 5%, 1); 
+  /* mudar de rgb para hsl = clicar na cor e no nome / hsla = opacidade 0 à 1 */
+  --secondary-color:  brown;
+  --terciary-color:  rgb(118, 99, 170);
+
+  --brand-beige: hsl(39, 100%, 97%);
+  --brand-light: hsl(148, 23%, 89%);
+
+  --nav-height: 7.2rem;
+
+}
+
+body {
+  font-family: 'Blaka', cursive; 
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+/* crio uma classe (neste caso chamei de wrapper) com atributos para usar em mais de uma caixa (para isso referencio a classe, ex: header class="wrapper") */
+.wrapper {
+  width: 37.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-inline: 2.4rem;
+
+}
+
+
+/* HEADER ====================================*/
+
+header {
+  
+  /*calc = faz cálculo de variáveis */
+  margin-top: calc(4.1rem + var(--nav-height));
+
+  /*padding-left: 2rem;
+  padding-right: 2rem; */
+
+  /* border: 1px solid brown; */
+}
+
+/* construir uma html pelo css */
+/* before = adiciona antes de todo conteudo do header */
+header::before {
+  content: "";
+
+  /*vw = viewport width (pega toda a largura de exibição da tela) */ 
+  width: 100vw;
+  height: calc(85rem + var(--nav-height));
+
+  /* posso colocar imagem de fundo */
+  background-color: var(--brand-light); 
+  /*background-image: url(/assets/medicinepaint.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;*/
+
+  display: block;
+
+  /* sobrepoe ao conteudo */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* eixo z = coloca o fundo por baixo do conteudo*/
+  z-index: -1;
+
+}
+
+header h4 {
+  color: var(--terciary-color);
+  font-size: 2rem;
+  margin-bottom: 1.6rem;
+}
+
+body h3 {
+  color: var(--secondary-color);
+}
+
+header h1 {
+  font-size: 3.4rem;
+  color: rgb(153, 57, 57);
+  line-height: 130%;
+
+  margin-bottom: 2.4rem;
+  
+}
+
+header p {
+  font-size: 1.8rem;
+  line-height: 150%; 
+  /* espaçamento da linha */
+  font-weight: 400;
+
+  margin-bottom: 3.2rem;
+}
+
+header button {
+  background: var(--secondary-color);
+  color: rgb(192, 180, 180);
+
+  /* border: none; */
+  border-radius: 4rem;
+ 
+  margin-bottom: 4rem;
+
+  height: 6.2rem;
+  width: 26.3rem;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Blaka', cursive;
+  text-transform: uppercase;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+
+  /* display: block; pega toda largura da pagina e joga o próximo elemento para baixo*/
+
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+header img {
+
+  display : block;
+  margin-inline: auto;
+
+  /* altera a posição da imagem dentro dela mesma */
+  object-position: 0rem 0rem; 
+
+  height: 16rem;
+  width: 15.28rem;
+
+  margin-bottom: 2rem;
+
+}
+
+/* stats vai ter mais peso que div */
+header .stats {
+  width: 32.7rem;
+
+  /* padding-block = eixo y (top e bottom)*/
+  padding-block: 4rem;
+
+  /* inline = referente ao eixo X (tanto left como right) */
+  margin-inline: auto;
+
+  background-color: var(--brand-beige);
+  border: 1px solid var(--brand-light);
+  border-radius: 0.6rem;
+
+  display:flex;
+  /* flex tem só um eixo*/ 
+  flex-direction: column; 
+  /* coloca uma caixa ao lado da outra em coluna */
+  justify-content: center;
+  gap: 6rem;
+
+}
+
+.stat h3 {
+  font-size: 4.8rem;
+  color: var(--secondary-color);
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+}
+
+.stats p {
+  margin: 0;
+  color: var(--primary-color);
+  line-height: 150%;
+
+}
+
+/* NAVIGATION =============================== */
+
+nav {
+  display: flex;
+  align-items: center;
+  /* ajusta pelo espaço ao meio para ficar cada um num canto */
+  justify-content: space-between;
+
+  /* ao usar somente padding (shorthand) posso referenciar inline e block juntos */
+  /*padding: 1.6rem 2.4rem; */
+
+  /* crio uma "variavel global" para o height */
+  height: var(--nav-height); 
+
+  /* deixa numa posição fixa na tela, porém perde alguns atributos*/
+  position: fixed;
+  top: 0;
+
+  /* fica na metade da tela */
+  left: 50%; 
+  /* faz o cálculo para deslocar o conteúdo que ficou na metade da tela e deixar equilibrado  */
+  transform: translateX(-50%);
+
+
+  
+}
